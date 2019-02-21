@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Javascript Test</title>
+    </head>
+ 
+    <body>
+        <script>
+            let choices = ["rock", "paper", "scissor"];
+            let outcome;
+
+            function computerPlay() {
+                let CompChoice = choices[Math.floor(Math.random() * choices.length)];
+                return CompChoice;
+            }
+
+            function playRound() {
+                let compChoice = computerPlay();
+                let getChoice = prompt("Rock, Paper, Scissor?");                
+                let playerChoice = getChoice.toLowerCase();
+                switch (compChoice) {
+                    case "rock":
+                        if (playerChoice == "rock") {
+                            outcome = "draw";
+                            return("It's a draw!");
+                        } else if (playerChoice == "paper") {
+                            outcome = "win";
+                            return("You win!");
+                        } else {
+                            outcome = "lose";
+                            return("You lose!");
+                        }
+                    break;
+                    case "paper":
+                        if (playerChoice == "rock") {
+                            outcome = "lose";
+                            return("You Lose!");
+                        } else if (playerChoice == "paper") {
+                            outcome = "draw";
+                            return("It's a draw!");
+                        } else {
+                            outcome = "win";
+                            return("You win!");
+                        }
+                    break;
+                    case "scissor":
+                        if (playerChoice == "rock") {
+                            outcome = "win";
+                            return("You win!");
+                        } else if (playerChoice == "paper") {
+                            outcome = "lose";
+                            return("You lose!");
+                        } else {
+                            outcome = "draw";
+                            return("It's a draw!");
+                        }
+                    break;
+                }
+           }
+           function game() {
+               let win = 0;
+               let lose = 0;
+               let draw = 0;
+
+               for (let i=0; i<5; i++) {
+                   playRound();
+                   switch (outcome){
+                    case "win":
+                        win++;
+                    break;
+                    case "lose":
+                        lose++;
+                    break;
+                    case "draw":
+                        draw++;
+                    break;
+                   }                
+               }
+               console.log("Win = " + win + ", Lost = " + lose + ", Draw = " + draw);
+               console.log("Your final score is " + win + " points out of 5!");
+           }
+        </script>
+    </body>
+
+</html>
